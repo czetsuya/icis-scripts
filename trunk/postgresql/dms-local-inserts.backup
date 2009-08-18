@@ -2,8 +2,6 @@
 -- PostgreSQL database dump
 --
 
--- Started on 2009-08-18 13:55:40
-
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = off;
@@ -14,32 +12,26 @@ SET escape_string_warning = off;
 SET search_path = "dms-local-fresh", pg_catalog;
 
 --
--- TOC entry 2302 (class 0 OID 17661)
--- Dependencies: 1774
 -- Data for Name: atributs; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY atributs ("AID", "GID", "ATYPE", "AUID", "AVAL", "ALOCN", "AREF", "ADATE") FROM stdin;
+COPY atributs (aid, gid, atype, auid, aval, alocn, aref, adate) FROM stdin;
 \.
 
 
 --
--- TOC entry 2303 (class 0 OID 17664)
--- Dependencies: 1775
 -- Data for Name: bibrefs; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY bibrefs ("REFID", "PUBTYPE", "PUBDATE", "AUTHORS", "EDITORS", "ANALYT", "MONOGR", "SERIES", "VOLUME", "ISSUE", "PAGECOL", "PUBLISH", "PUCITY", "PUCNTRY") FROM stdin;
+COPY bibrefs (refid, pubtype, pubdate, authors, editors, analyt, monogr, series, volume, issue, pagecol, publish, pucity, pucntry) FROM stdin;
 \.
 
 
 --
--- TOC entry 2304 (class 0 OID 17670)
--- Dependencies: 1776
 -- Data for Name: changes; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY changes ("CID", "CTABLE", "CFIELD", "CRECORD", "CFROM", "CTO", "CDATE", "CTIME", "CGROUP", "CUID", "CREF", "CSTATUS", "CDESC") FROM stdin;
+COPY changes (cid, ctable, cfield, crecord, cfrom, cto, cdate, ctime, cgroup, cuid, cref, cstatus, cdesc) FROM stdin;
 -3722	GERMPLSM	GID	-1	-1	1161259	20040909	15424639	20040909154246	108	0	0	15:42:46     1161259     0 20040909154246                                                                 
 -3721	GERMPLSM	GID	-2	-2	1161338	20040909	15424626	20040909154246	108	0	0	15:42:46     1161338     0 20040909154246                                                                 
 -3720	GERMPLSM	GID	-3	-3	1161393	20040909	15424614	20040909154246	108	0	0	15:42:46     1161393     0 20040909154246                                                                 
@@ -3766,12 +3758,10 @@ COPY changes ("CID", "CTABLE", "CFIELD", "CRECORD", "CFROM", "CTO", "CDATE", "CT
 
 
 --
--- TOC entry 2305 (class 0 OID 17673)
--- Dependencies: 1777
 -- Data for Name: data_c; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY data_c ("OUNITID", "VARIATID", "DVALUE") FROM stdin;
+COPY data_c (ounitid, variatid, dvalue) FROM stdin;
 -4970	-44	1
 -4969	-44	1
 -4968	-44	1
@@ -7635,12 +7625,10 @@ COPY data_c ("OUNITID", "VARIATID", "DVALUE") FROM stdin;
 
 
 --
--- TOC entry 2306 (class 0 OID 17676)
--- Dependencies: 1778
 -- Data for Name: data_n; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY data_n ("OUNITID", "VARIATID", "DVALUE") FROM stdin;
+COPY data_n (ounitid, variatid, dvalue) FROM stdin;
 -1427	-18	6
 -1426	-18	6
 -1425	-18	6
@@ -10956,32 +10944,26 @@ COPY data_n ("OUNITID", "VARIATID", "DVALUE") FROM stdin;
 
 
 --
--- TOC entry 2307 (class 0 OID 17679)
--- Dependencies: 1779
 -- Data for Name: data_t; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY data_t ("OUNITID", "VARIATID", "DVALUE") FROM stdin;
+COPY data_t (ounitid, variatid, dvalue) FROM stdin;
 \.
 
 
 --
--- TOC entry 2308 (class 0 OID 17685)
--- Dependencies: 1780
 -- Data for Name: datattr; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY datattr ("DATTRID", "DATYPE", "DATABLE", "OUNITID", "VARIATID", "DATVAL") FROM stdin;
+COPY datattr (dattrid, datype, datable, ounitid, variatid, datval) FROM stdin;
 \.
 
 
 --
--- TOC entry 2309 (class 0 OID 17691)
--- Dependencies: 1781
 -- Data for Name: dmsattr; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY dmsattr ("DMSATID", "DMSATYPE", "DMSATAB", "DMSATREC", "DMSATVAL") FROM stdin;
+COPY dmsattr (dmsatid, dmsatype, dmsatab, dmsatrec, dmsatval) FROM stdin;
 -100	802	VARIATE	-68	Disposition of seed
 -99	802	VARIATE	-67	Use of data
 -98	802	VARIATE	-66	Harvest protocol
@@ -11086,22 +11068,18 @@ COPY dmsattr ("DMSATID", "DMSATYPE", "DMSATAB", "DMSATREC", "DMSATVAL") FROM std
 
 
 --
--- TOC entry 2310 (class 0 OID 17697)
--- Dependencies: 1782
 -- Data for Name: dudflds; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY dudflds ("FLDNO", "FTABLE", "FTYPE", "FCODE", "FNAME", "FFMT", "FDESC", "LFLDNO", "FUID", "FDATE", "OldFLDNO", "OldFLDID") FROM stdin;
+COPY dudflds (fldno, ftable, ftype, fcode, fname, ffmt, fdesc, lfldno, fuid, fdate, oldfldno, oldfldid) FROM stdin;
 \.
 
 
 --
--- TOC entry 2311 (class 0 OID 17703)
--- Dependencies: 1783
 -- Data for Name: effect; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY effect ("REPRESNO", "FACTORID", "EFFECTID") FROM stdin;
+COPY effect (represno, factorid, effectid) FROM stdin;
 -12	-41	-12
 -12	-38	-12
 -11	-31	-11
@@ -11134,12 +11112,10 @@ COPY effect ("REPRESNO", "FACTORID", "EFFECTID") FROM stdin;
 
 
 --
--- TOC entry 2312 (class 0 OID 17706)
--- Dependencies: 1784
 -- Data for Name: factor; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY factor ("LABELID", "FACTORID", "FNAME", "STUDYID", "TRAITID", "SCALEID", "TMETHID", "LTYPE") FROM stdin;
+COPY factor (labelid, factorid, fname, studyid, traitid, scaleid, tmethid, ltype) FROM stdin;
 -41	-41	PLOT	-5	205	146	133	C
 -40	-38	DESIGNATION	-5	251	92	17	C
 -39	-38	GID	-5	251	91	17	N
@@ -11185,22 +11161,18 @@ COPY factor ("LABELID", "FACTORID", "FNAME", "STUDYID", "TRAITID", "SCALEID", "T
 
 
 --
--- TOC entry 2313 (class 0 OID 17709)
--- Dependencies: 1785
 -- Data for Name: georef; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY georef ("LOCID", "LLPN", "LAT", "LON", "ALT") FROM stdin;
+COPY georef (locid, llpn, lat, lon, alt) FROM stdin;
 \.
 
 
 --
--- TOC entry 2314 (class 0 OID 17712)
--- Dependencies: 1786
 -- Data for Name: germplsm; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY germplsm ("GID", "METHN", "GNPGS", "GPID1", "GPID2", "GERMUID", "LGID", "GLOCN", "GDATE", "GREF", "GRPLCE", "MGID") FROM stdin;
+COPY germplsm (gid, methn, gnpgs, gpid1, gpid2, germuid, lgid, glocn, gdate, gref, grplce, mgid) FROM stdin;
 -11191	1	2	0	0	-1	0	9000	20030000	0	1282558	0
 -11190	1	2	0	0	-1	0	9000	20030000	0	1282559	0
 -11189	1	2	0	0	-1	0	9000	20030000	0	1282560	0
@@ -22396,42 +22368,18 @@ COPY germplsm ("GID", "METHN", "GNPGS", "GPID1", "GPID2", "GERMUID", "LGID", "GL
 
 
 --
--- TOC entry 2315 (class 0 OID 17715)
--- Dependencies: 1787
--- Data for Name: i_accession; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
---
-
-COPY i_accession ("ACCID", "CULTNAME", "ALTNAME", "DERVNAME", "CROSS", "DNRNO", "ALTERID", "SRCACC", "SPECIES", "METHA", "METHS", "AORIG", "BORIG", "ADATE", "SDATE", "COLLID", "STATUS", "COLLENV", "MISSCDE", "DNRID", "DNRCTY", "RECNO", "GID") FROM stdin;
-\.
-
-
---
--- TOC entry 2316 (class 0 OID 17721)
--- Dependencies: 1788
 -- Data for Name: i_bchist; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY i_bchist ("BCID", "FEMALE_ORIG", "FEMALE", "MALE_ORIG", "MALE", "METHOD", "LOCATION", "DATE", "RECNO", "GID") FROM stdin;
+COPY i_bchist (bcid, female_orig, female, male_orig, male, method, location, date, recno, gid) FROM stdin;
 \.
 
 
 --
--- TOC entry 2317 (class 0 OID 17724)
--- Dependencies: 1789
--- Data for Name: i_cultlist; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
---
-
-COPY i_cultlist ("NAME", "NTYPE", "DATE", "LOCATION", "METHOD", "CROSS", "CROSSDATE", "ALTNAME", "ANTYPE", "RECNO", "GID") FROM stdin;
-\.
-
-
---
--- TOC entry 2318 (class 0 OID 17727)
--- Dependencies: 1790
 -- Data for Name: ims_label_otherinfo; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY ims_label_otherinfo ("ID", "OTHERINFO_ID", "LABELINFO_ID", "GROUP_PREFIX", "TABLENAME", "FIELDNAME", "FOREIGN_FIELDNAME") FROM stdin;
+COPY ims_label_otherinfo (id, otherinfo_id, labelinfo_id, group_prefix, tablename, fieldname, foreign_fieldname) FROM stdin;
 1	1	100	ALL	GERMPLSM	GID	\N
 2	2	100	ALL	LISTNMS	DESIGNATION	\N
 3	3	100	ALL	IMS_LOT	LOT ID	\N
@@ -22441,23 +22389,19 @@ COPY ims_label_otherinfo ("ID", "OTHERINFO_ID", "LABELINFO_ID", "GROUP_PREFIX", 
 
 
 --
--- TOC entry 2319 (class 0 OID 17730)
--- Dependencies: 1791
 -- Data for Name: ims_labelinfo; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY ims_labelinfo ("ID", "LABELINFO_ID", "GROUP_PREFIX", "LABELITEMCOUNT") FROM stdin;
+COPY ims_labelinfo (id, labelinfo_id, group_prefix, labelitemcount) FROM stdin;
 1	100	GR	5
 \.
 
 
 --
--- TOC entry 2320 (class 0 OID 17733)
--- Dependencies: 1792
 -- Data for Name: ims_lot; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY ims_lot ("LOTID", "USERID", "ETYPE", "EID", "LOCID", "SCALEID", "STATUS", "SOURCEID", "COMMENTS") FROM stdin;
+COPY ims_lot (lotid, userid, etype, eid, locid, scaleid, status, sourceid, comments) FROM stdin;
 1	108	GERMPLSM	70732	-1337	-10	0	0	lot created Feb 1 2005
 2	108	GERMPLSM	904702	-1337	-10	0	0	lot created Feb 1 2005
 3	108	GERMPLSM	569031	-1337	-10	0	0	lot created Feb 1 2005
@@ -22481,12 +22425,10 @@ COPY ims_lot ("LOTID", "USERID", "ETYPE", "EID", "LOCID", "SCALEID", "STATUS", "
 
 
 --
--- TOC entry 2321 (class 0 OID 17736)
--- Dependencies: 1793
 -- Data for Name: ims_transaction; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY ims_transaction ("TRNID", "USERID", "LOTID", "TRNDATE", "TRNSTAT", "TRNQTY", "COMMENTS", "CMTDATA", "SOURCETYPE", "SOURCEID", "RECORDID", "PREVAMOUNT", "PERSONID") FROM stdin;
+COPY ims_transaction (trnid, userid, lotid, trndate, trnstat, trnqty, comments, cmtdata, sourcetype, sourceid, recordid, prevamount, personid) FROM stdin;
 1	108	1	20050201	1	120	deposit made Feb 1 2005	20050201	LIST	-21	1	120	\N
 1	108	2	20050201	1	120	deposit made Feb 1 2005	20050201	LIST	-21	2	120	\N
 1	108	3	20050201	1	120	deposit made Feb 1 2005	20050201	LIST	-21	3	120	\N
@@ -22510,34 +22452,28 @@ COPY ims_transaction ("TRNID", "USERID", "LOTID", "TRNDATE", "TRNSTAT", "TRNQTY"
 
 
 --
--- TOC entry 2322 (class 0 OID 17739)
--- Dependencies: 1794
 -- Data for Name: institut; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY institut ("INSTITID", "PINSID", "INSNAME", "INSACR", "INSTYPE", "STREET", "POSTBOX", "CITY", "STATEID", "CPOSTAL", "CNTRYID", "APHONE", "AFAX", "AEMAIL", "WEBURL", "SINS", "EINS", "ICHANGE") FROM stdin;
+COPY institut (institid, pinsid, insname, insacr, instype, street, postbox, city, stateid, cpostal, cntryid, aphone, afax, aemail, weburl, sins, eins, ichange) FROM stdin;
 \.
 
 
 --
--- TOC entry 2323 (class 0 OID 17745)
--- Dependencies: 1795
 -- Data for Name: instln; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY instln ("INSTALID", "ADMIN", "UDATE", "UGID", "ULOCN", "UCID", "UNID", "UAID", "ULDID", "UMETHN", "UFLDNO", "UREFNO", "UPID", "IDESC", "ULISTID", "DMS_STATUS", "ULRECID") FROM stdin;
+COPY instln (instalid, admin, udate, ugid, ulocn, ucid, unid, uaid, uldid, umethn, ufldno, urefno, upid, idesc, ulistid, dms_status, ulrecid) FROM stdin;
 60	108	20030808	0	0	0	0	0	0	0	0	0	0	LOCAL FOR THE IRIS RICE BREEDING TRAINING COURSE	0	0	0
 60	108	20030808	0	0	0	0	0	0	0	0	0	0	LOCAL FOR THE IRIS RICE BREEDING TRAINING COURSE	0	0	0
 \.
 
 
 --
--- TOC entry 2324 (class 0 OID 17748)
--- Dependencies: 1796
 -- Data for Name: level_c; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY level_c ("LABELID", "FACTORID", "LEVELNO", "LVALUE") FROM stdin;
+COPY level_c (labelid, factorid, levelno, lvalue) FROM stdin;
 -41	-41	-8267	3125
 -41	-41	-8265	3124
 -41	-41	-8263	3123
@@ -30774,12 +30710,10 @@ COPY level_c ("LABELID", "FACTORID", "LEVELNO", "LVALUE") FROM stdin;
 
 
 --
--- TOC entry 2325 (class 0 OID 17751)
--- Dependencies: 1797
 -- Data for Name: level_n; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY level_n ("LABELID", "FACTORID", "LEVELNO", "LVALUE") FROM stdin;
+COPY level_n (labelid, factorid, levelno, lvalue) FROM stdin;
 -39	-38	-8266	-9842
 -39	-38	-8264	-9841
 -39	-38	-8262	-9840
@@ -40927,22 +40861,18 @@ COPY level_n ("LABELID", "FACTORID", "LEVELNO", "LVALUE") FROM stdin;
 
 
 --
--- TOC entry 2326 (class 0 OID 17754)
--- Dependencies: 1798
 -- Data for Name: level_t; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY level_t ("FACTORID", "LEVELNO", "LVALUE", "LABELID") FROM stdin;
+COPY level_t (factorid, levelno, lvalue, labelid) FROM stdin;
 \.
 
 
 --
--- TOC entry 2327 (class 0 OID 17760)
--- Dependencies: 1799
 -- Data for Name: levels; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY levels ("LEVELNO", "FACTORID") FROM stdin;
+COPY levels (levelno, factorid) FROM stdin;
 -8269	-38
 -8268	-38
 -8267	-41
@@ -49207,12 +49137,10 @@ COPY levels ("LEVELNO", "FACTORID") FROM stdin;
 
 
 --
--- TOC entry 2328 (class 0 OID 17763)
--- Dependencies: 1800
 -- Data for Name: listdata; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY listdata ("LISTID", "GID", "ENTRYID", "ENTRYCD", "SOURCE", "DESIG", "GRPNAME", "LRSTATUS", "LRECID", "LLRECID") FROM stdin;
+COPY listdata (listid, gid, entryid, entrycd, source, desig, grpname, lrstatus, lrecid, llrecid) FROM stdin;
 -20	204538	1	APO	?	NSIC RC 9	UPL RI 5/IR 12979-24-1 (BROWN)	0	1	\N
 -20	367004	2	2	?	UPL RI 7	C 22/IR 26//C 22/OS 4	0	2	\N
 -20	404133	3	3	?	CT 6510-24-1-2	P 2057-F4-88-3-1/IRAT 120//SUAKOKO///COL 1 X M 312 A-74-2-8-8	0	3	\N
@@ -55986,12 +55914,10 @@ COPY listdata ("LISTID", "GID", "ENTRYID", "ENTRYCD", "SOURCE", "DESIG", "GRPNAM
 
 
 --
--- TOC entry 2329 (class 0 OID 17769)
--- Dependencies: 1801
 -- Data for Name: listnms; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY listnms ("LISTID", "LISTNAME", "LISTDATE", "LISTTYPE", "LISTUID", "LISTDESC", "LISTSTATUS", "LHIERARCHY") FROM stdin;
+COPY listnms (listid, listname, listdate, listtype, listuid, listdesc, liststatus, lhierarchy) FROM stdin;
 -20	CHECKS	20030728	LST	-3	UPLAND CHECKS	1	0
 -19	U03WS-09	20030723	OYT	-3	Upland 2002 Wet Season (Siniloan, OYT from Dr. Lafitte)	1	0
 -18	U03WS-08	20030723	OYT	-3	Upland 2002 Wet Season (Siniloan, Low P seeds from Matthias)	1	0
@@ -56015,12 +55941,10 @@ COPY listnms ("LISTID", "LISTNAME", "LISTDATE", "LISTTYPE", "LISTUID", "LISTDESC
 
 
 --
--- TOC entry 2330 (class 0 OID 17773)
--- Dependencies: 1802
 -- Data for Name: location; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY location ("LOCID", "LTYPE", "NLLP", "LNAME", "LABBR", "SNL3ID", "SNL2ID", "SNL1ID", "CNTRYID", "LRPLCE") FROM stdin;
+COPY location (locid, ltype, nllp, lname, labbr, snl3id, snl2id, snl1id, cntryid, lrplce) FROM stdin;
 -9000	1500	0	International Rice Research Institute	IRRI	0	0	0	171	0
 -1341	1500	0	Genetic Resources Center	GRC	0	0	-9000	171	0
 -1337	1500	0	LT,Tray No 626	LT-626	-1297	-1341	-9000	171	0
@@ -57363,32 +57287,26 @@ COPY location ("LOCID", "LTYPE", "NLLP", "LNAME", "LABBR", "SNL3ID", "SNL2ID", "
 
 
 --
--- TOC entry 2331 (class 0 OID 17776)
--- Dependencies: 1803
 -- Data for Name: locdes; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY locdes ("LDID", "LOCID", "DTYPE", "DUID", "DVAL", "DDATE", "DREF") FROM stdin;
+COPY locdes (ldid, locid, dtype, duid, dval, ddate, dref) FROM stdin;
 \.
 
 
 --
--- TOC entry 2332 (class 0 OID 17779)
--- Dependencies: 1804
 -- Data for Name: methods; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY methods ("MID", "MTYPE", "MGRP", "MCODE", "MNAME", "MDESC", "MREF", "MPRGN", "MFPRG", "MATTR", "GENEQ", "MUID", "LMID", "MDATE") FROM stdin;
+COPY methods (mid, mtype, mgrp, mcode, mname, mdesc, mref, mprgn, mfprg, mattr, geneq, muid, lmid, mdate) FROM stdin;
 \.
 
 
 --
--- TOC entry 2333 (class 0 OID 17782)
--- Dependencies: 1805
 -- Data for Name: names; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY names ("NID", "GID", "NTYPE", "NSTAT", "NUID", "NVAL", "NLOCN", "NDATE", "NREF") FROM stdin;
+COPY names (nid, gid, ntype, nstat, nuid, nval, nlocn, ndate, nref) FROM stdin;
 -11191	-11191	2	1	-1	WAB 881 SG 9	9000	20030000	0
 -11190	-11190	2	1	-1	WAB 881 SG 36	9000	20030000	0
 -11189	-11189	2	1	-1	WAB 881 SG 33	9000	20030000	0
@@ -68584,12 +68502,10 @@ COPY names ("NID", "GID", "NTYPE", "NSTAT", "NUID", "NVAL", "NLOCN", "NDATE", "N
 
 
 --
--- TOC entry 2334 (class 0 OID 17785)
--- Dependencies: 1806
 -- Data for Name: obsunit; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY obsunit ("OUNITID", "EFFECTID") FROM stdin;
+COPY obsunit (ounitid, effectid) FROM stdin;
 -4970	-12
 -4969	-12
 -4968	-12
@@ -73563,12 +73479,10 @@ COPY obsunit ("OUNITID", "EFFECTID") FROM stdin;
 
 
 --
--- TOC entry 2335 (class 0 OID 17788)
--- Dependencies: 1807
 -- Data for Name: oindex; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY oindex ("OUNITID", "FACTORID", "LEVELNO", "REPRESNO") FROM stdin;
+COPY oindex (ounitid, factorid, levelno, represno) FROM stdin;
 -4968	-41	-8267	-12
 -4967	-41	-8265	-12
 -4966	-41	-8263	-12
@@ -87947,42 +87861,34 @@ COPY oindex ("OUNITID", "FACTORID", "LEVELNO", "REPRESNO") FROM stdin;
 
 
 --
--- TOC entry 2336 (class 0 OID 17791)
--- Dependencies: 1808
 -- Data for Name: persons; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY persons ("PERSONID", "FNAME", "LNAME", "IONAME", "INSTITID", "PTITLE", "PONAME", "PLANGU", "PPHONE", "PEXTENT", "PFAX", "PEMAIL", "PROLE", "SPERSON", "EPERSON", "PSTATUS", "PNOTES", "CONTACT") FROM stdin;
+COPY persons (personid, fname, lname, ioname, institid, ptitle, poname, plangu, pphone, pextent, pfax, pemail, prole, sperson, eperson, pstatus, pnotes, contact) FROM stdin;
 \.
 
 
 --
--- TOC entry 2337 (class 0 OID 17797)
--- Dependencies: 1809
 -- Data for Name: progntrs; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY progntrs ("GID", "PNO", "PID") FROM stdin;
+COPY progntrs (gid, pno, pid) FROM stdin;
 \.
 
 
 --
--- TOC entry 2338 (class 0 OID 17800)
--- Dependencies: 1810
 -- Data for Name: reflinks; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY reflinks ("BREFLID", "BTABLE", "BRECORD") FROM stdin;
+COPY reflinks (breflid, btable, brecord) FROM stdin;
 \.
 
 
 --
--- TOC entry 2339 (class 0 OID 17803)
--- Dependencies: 1811
 -- Data for Name: represtn; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY represtn ("REPRESNO", "EFFECTID", "REPRESNAME") FROM stdin;
+COPY represtn (represno, effectid, represname) FROM stdin;
 -12	-12	-
 -11	-11	-
 -10	-10	-
@@ -87998,12 +87904,10 @@ COPY represtn ("REPRESNO", "EFFECTID", "REPRESNAME") FROM stdin;
 
 
 --
--- TOC entry 2340 (class 0 OID 17806)
--- Dependencies: 1812
 -- Data for Name: scale; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY scale ("SCALEID", "SCNAME", "TRAITID", "SCTYPE") FROM stdin;
+COPY scale (scaleid, scname, traitid, sctype) FROM stdin;
 -13	VISUAL RATING 9PT.	1003	-
 -11	Season Code (DS/WS)	220	-
 -10	g in Al foil	1500	C
@@ -88020,12 +87924,10 @@ COPY scale ("SCALEID", "SCNAME", "TRAITID", "SCTYPE") FROM stdin;
 
 
 --
--- TOC entry 2341 (class 0 OID 17809)
--- Dependencies: 1813
 -- Data for Name: scale_bak; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY scale_bak ("SCALEID", "SCNAME", "TRAITID", "SCTYPE") FROM stdin;
+COPY scale_bak (scaleid, scname, traitid, sctype) FROM stdin;
 -10	g in Al foil	1500	C
 -9	Packet	1500	C
 -8	-	-1	-
@@ -88040,42 +87942,34 @@ COPY scale_bak ("SCALEID", "SCNAME", "TRAITID", "SCTYPE") FROM stdin;
 
 
 --
--- TOC entry 2342 (class 0 OID 17812)
--- Dependencies: 1814
 -- Data for Name: scalecon; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY scalecon ("SCALEID", "SLEVEL", "ELEVEL") FROM stdin;
+COPY scalecon (scaleid, slevel, elevel) FROM stdin;
 \.
 
 
 --
--- TOC entry 2343 (class 0 OID 17815)
--- Dependencies: 1815
 -- Data for Name: scaledis; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY scaledis ("SCALEID", "VALUE", "VALDESC") FROM stdin;
+COPY scaledis (scaleid, value, valdesc) FROM stdin;
 \.
 
 
 --
--- TOC entry 2344 (class 0 OID 17818)
--- Dependencies: 1816
 -- Data for Name: scaletab; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY scaletab ("SCALEID", "SSQL", "SMODULE") FROM stdin;
+COPY scaletab (scaleid, ssql, smodule) FROM stdin;
 \.
 
 
 --
--- TOC entry 2345 (class 0 OID 17821)
--- Dependencies: 1817
 -- Data for Name: steffect; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY steffect ("EFFECTID", "STUDYID", "EFFECTNAME") FROM stdin;
+COPY steffect (effectid, studyid, effectname) FROM stdin;
 -12	-5	-
 -11	-5	-
 -10	-4	-
@@ -88090,12 +87984,10 @@ COPY steffect ("EFFECTID", "STUDYID", "EFFECTNAME") FROM stdin;
 
 
 --
--- TOC entry 2346 (class 0 OID 17824)
--- Dependencies: 1818
 -- Data for Name: study; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY study ("STUDYID", "SNAME", "PMKEY", "TITLE", "OBJECTIV", "INVESTID", "STYPE", "SDATE", "EDATE", "USERID", "SSTATUS", "SHIERARCHY") FROM stdin;
+COPY study (studyid, sname, pmkey, title, objectiv, investid, stype, sdate, edate, userid, sstatus, shierarchy) FROM stdin;
 -5	UWS03-02	-1	Upland 2003 Wet Season F4 Nursery (Siniloan)	Select F4 plants for the upland program	0	E	2003	2003	0	1	0
 -4	UWS03-01	-1	Upland 2003 Wet Season F3 Nursery (Siniloan)	Select F3 plants for the upland program	0	E	2003	2003	0	1	0
 -3	UDS03F4	0	Lines selected for harvest from UDS03F4	-	0	E	20030101	20030101	0	1	0
@@ -88105,12 +87997,10 @@ COPY study ("STUDYID", "SNAME", "PMKEY", "TITLE", "OBJECTIV", "INVESTID", "STYPE
 
 
 --
--- TOC entry 2347 (class 0 OID 17831)
--- Dependencies: 1819
 -- Data for Name: tmethod; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY tmethod ("TMETHID", "TMNAME", "TRAITID", "TMABBR", "TMDESC") FROM stdin;
+COPY tmethod (tmethid, tmname, traitid, tmabbr, tmdesc) FROM stdin;
 -25	At Harvest	1500	HRVST	-
 -24	At Harvest	1013	-	-
 -23	rem13	214	-	-
@@ -88140,12 +88030,10 @@ COPY tmethod ("TMETHID", "TMNAME", "TRAITID", "TMABBR", "TMDESC") FROM stdin;
 
 
 --
--- TOC entry 2348 (class 0 OID 17837)
--- Dependencies: 1820
 -- Data for Name: trait; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY trait ("TID", "TRAITID", "TRNAME", "TRABBR", "TRDESC", "SCALEID", "TMETHID", "TNSTAT") FROM stdin;
+COPY trait (tid, traitid, trname, trabbr, trdesc, scaleid, tmethid, tnstat) FROM stdin;
 -1	-6	HARVEST DATE	-	-	0	0	0
 -2	-5	HARVEST DATE	-	-	0	0	0
 -3	-4	GRAIN WEIGHT	-	-	0	0	0
@@ -88156,33 +88044,27 @@ COPY trait ("TID", "TRAITID", "TRNAME", "TRABBR", "TRDESC", "SCALEID", "TMETHID"
 
 
 --
--- TOC entry 2349 (class 0 OID 17843)
--- Dependencies: 1821
 -- Data for Name: udflds; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY udflds ("FLDNO", "FTABLE", "FTYPE", "FCODE", "FNAME", "FFMT", "FDESC", "LFLDNO", "FUID", "FDATE", "SCALEID") FROM stdin;
+COPY udflds (fldno, ftable, ftype, fcode, fname, ffmt, fdesc, lfldno, fuid, fdate, scaleid) FROM stdin;
 \.
 
 
 --
--- TOC entry 2350 (class 0 OID 17849)
--- Dependencies: 1822
 -- Data for Name: users; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY users ("USERID", "INSTALID", "USTATUS", "UACCESS", "UTYPE", "UNAME", "UPSWD", "PERSONID", "ADATE", "CDATE") FROM stdin;
+COPY users (userid, instalid, ustatus, uaccess, utype, uname, upswd, personid, adate, cdate) FROM stdin;
 108	60	1	100	422	RBREED	RBREED	0	20030813	0
 \.
 
 
 --
--- TOC entry 2351 (class 0 OID 17852)
--- Dependencies: 1823
 -- Data for Name: variate; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY variate ("VARIATID", "VNAME", "STUDYID", "VTYPE", "TRAITID", "SCALEID", "TMETHID", "DTYPE") FROM stdin;
+COPY variate (variatid, vname, studyid, vtype, traitid, scaleid, tmethid, dtype) FROM stdin;
 -68	SEED DISPOSITION	-5	MV	214	245	223	C
 -67	DATA USAGE PROTOCOL	-5	MV	214	245	223	C
 -66	HARVEST PROTOCOL	-5	MV	214	245	223	C
@@ -88255,12 +88137,10 @@ COPY variate ("VARIATID", "VNAME", "STUDYID", "VTYPE", "TRAITID", "SCALEID", "TM
 
 
 --
--- TOC entry 2352 (class 0 OID 17855)
--- Dependencies: 1824
 -- Data for Name: veffect; Type: TABLE DATA; Schema: dms-local-fresh; Owner: postgres
 --
 
-COPY veffect ("REPRESNO", "VARIATID") FROM stdin;
+COPY veffect (represno, variatid) FROM stdin;
 -11	-68
 -11	-67
 -11	-66
@@ -88347,8 +88227,6 @@ COPY veffect ("REPRESNO", "VARIATID") FROM stdin;
 -4	-1
 \.
 
-
--- Completed on 2009-08-18 13:55:42
 
 --
 -- PostgreSQL database dump complete
