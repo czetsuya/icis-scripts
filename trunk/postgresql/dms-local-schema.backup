@@ -1,0 +1,2497 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Started on 2009-08-18 13:55:29
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = off;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET escape_string_warning = off;
+
+--
+-- TOC entry 7 (class 2615 OID 17263)
+-- Name: dms-local-fresh; Type: SCHEMA; Schema: -; Owner: -
+--
+
+CREATE SCHEMA "dms-local-fresh";
+
+
+SET search_path = "dms-local-fresh", pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 1774 (class 1259 OID 17661)
+-- Dependencies: 7
+-- Name: atributs; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE atributs (
+    "AID" integer,
+    "GID" integer NOT NULL,
+    "ATYPE" integer NOT NULL,
+    "AUID" integer NOT NULL,
+    "AVAL" character varying(255),
+    "ALOCN" integer,
+    "AREF" integer,
+    "ADATE" integer
+);
+
+
+--
+-- TOC entry 1775 (class 1259 OID 17664)
+-- Dependencies: 7
+-- Name: bibrefs; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE bibrefs (
+    "REFID" integer NOT NULL,
+    "PUBTYPE" integer,
+    "PUBDATE" integer,
+    "AUTHORS" character varying(100),
+    "EDITORS" character varying(100),
+    "ANALYT" character varying(255),
+    "MONOGR" character varying(255),
+    "SERIES" character varying(255),
+    "VOLUME" character varying(10),
+    "ISSUE" character varying(10),
+    "PAGECOL" character varying(25),
+    "PUBLISH" character varying(50),
+    "PUCITY" character varying(30),
+    "PUCNTRY" character varying(75)
+);
+
+
+--
+-- TOC entry 1776 (class 1259 OID 17670)
+-- Dependencies: 7
+-- Name: changes; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE changes (
+    "CID" integer NOT NULL,
+    "CTABLE" character varying(16) NOT NULL,
+    "CFIELD" character varying(16) NOT NULL,
+    "CRECORD" integer NOT NULL,
+    "CFROM" integer,
+    "CTO" integer,
+    "CDATE" integer,
+    "CTIME" integer,
+    "CGROUP" character varying(20),
+    "CUID" integer,
+    "CREF" integer,
+    "CSTATUS" integer NOT NULL,
+    "CDESC" character varying(255)
+);
+
+
+--
+-- TOC entry 1777 (class 1259 OID 17673)
+-- Dependencies: 7
+-- Name: data_c; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE data_c (
+    "OUNITID" integer,
+    "VARIATID" integer,
+    "DVALUE" character varying(50)
+);
+
+
+--
+-- TOC entry 1778 (class 1259 OID 17676)
+-- Dependencies: 7
+-- Name: data_n; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE data_n (
+    "OUNITID" integer,
+    "VARIATID" integer,
+    "DVALUE" double precision
+);
+
+
+--
+-- TOC entry 1779 (class 1259 OID 17679)
+-- Dependencies: 7
+-- Name: data_t; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE data_t (
+    "OUNITID" integer,
+    "VARIATID" integer,
+    "DVALUE" text
+);
+
+
+--
+-- TOC entry 1780 (class 1259 OID 17685)
+-- Dependencies: 7
+-- Name: datattr; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE datattr (
+    "DATTRID" integer NOT NULL,
+    "DATYPE" integer,
+    "DATABLE" character varying(2),
+    "OUNITID" integer,
+    "VARIATID" integer,
+    "DATVAL" text
+);
+
+
+--
+-- TOC entry 1781 (class 1259 OID 17691)
+-- Dependencies: 7
+-- Name: dmsattr; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE dmsattr (
+    "DMSATID" integer NOT NULL,
+    "DMSATYPE" integer,
+    "DMSATAB" character varying(10),
+    "DMSATREC" integer,
+    "DMSATVAL" text
+);
+
+
+--
+-- TOC entry 1782 (class 1259 OID 17697)
+-- Dependencies: 7
+-- Name: dudflds; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE dudflds (
+    "FLDNO" integer,
+    "FTABLE" character varying(24),
+    "FTYPE" character varying(12),
+    "FCODE" character varying(8),
+    "FNAME" character varying(50),
+    "FFMT" character varying(255),
+    "FDESC" text,
+    "LFLDNO" integer,
+    "FUID" integer,
+    "FDATE" integer,
+    "OldFLDNO" integer,
+    "OldFLDID" integer
+);
+
+
+--
+-- TOC entry 1783 (class 1259 OID 17703)
+-- Dependencies: 7
+-- Name: effect; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE effect (
+    "REPRESNO" integer NOT NULL,
+    "FACTORID" integer,
+    "EFFECTID" integer
+);
+
+
+--
+-- TOC entry 1784 (class 1259 OID 17706)
+-- Dependencies: 7
+-- Name: factor; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE factor (
+    "LABELID" integer NOT NULL,
+    "FACTORID" integer,
+    "FNAME" character varying(50),
+    "STUDYID" integer NOT NULL,
+    "TRAITID" integer,
+    "SCALEID" integer,
+    "TMETHID" integer,
+    "LTYPE" character varying(1)
+);
+
+
+--
+-- TOC entry 1785 (class 1259 OID 17709)
+-- Dependencies: 7
+-- Name: georef; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE georef (
+    "LOCID" integer,
+    "LLPN" integer,
+    "LAT" double precision,
+    "LON" double precision,
+    "ALT" double precision
+);
+
+
+--
+-- TOC entry 1786 (class 1259 OID 17712)
+-- Dependencies: 7
+-- Name: germplsm; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE germplsm (
+    "GID" integer NOT NULL,
+    "METHN" integer,
+    "GNPGS" integer,
+    "GPID1" integer,
+    "GPID2" integer,
+    "GERMUID" integer,
+    "LGID" integer,
+    "GLOCN" integer,
+    "GDATE" integer,
+    "GREF" integer,
+    "GRPLCE" integer,
+    "MGID" integer
+);
+
+
+--
+-- TOC entry 1787 (class 1259 OID 17715)
+-- Dependencies: 7
+-- Name: i_accession; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE i_accession (
+    "ACCID" character varying(50),
+    "CULTNAME" character varying(50),
+    "ALTNAME" character varying(50),
+    "DERVNAME" character varying(50),
+    "CROSS" character varying(50),
+    "DNRNO" character varying(50),
+    "ALTERID" character varying(50),
+    "SRCACC" character varying(50),
+    "SPECIES" character varying(50),
+    "METHA" integer,
+    "METHS" integer,
+    "AORIG" integer,
+    "BORIG" integer,
+    "ADATE" character varying(50),
+    "SDATE" character varying(50),
+    "COLLID" character varying(50),
+    "STATUS" character varying(50),
+    "COLLENV" character varying(50),
+    "MISSCDE" character varying(50),
+    "DNRID" character varying(50),
+    "DNRCTY" character varying(50),
+    "RECNO" integer,
+    "GID" integer
+);
+
+
+--
+-- TOC entry 1788 (class 1259 OID 17721)
+-- Dependencies: 7
+-- Name: i_bchist; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE i_bchist (
+    "BCID" character varying(50),
+    "FEMALE_ORIG" character varying(50),
+    "FEMALE" character varying(50),
+    "MALE_ORIG" character varying(50),
+    "MALE" character varying(50),
+    "METHOD" integer,
+    "LOCATION" character varying(50),
+    "DATE" integer,
+    "RECNO" integer,
+    "GID" integer
+);
+
+
+--
+-- TOC entry 1789 (class 1259 OID 17724)
+-- Dependencies: 7
+-- Name: i_cultlist; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE i_cultlist (
+    "NAME" character varying(50),
+    "NTYPE" integer,
+    "DATE" integer,
+    "LOCATION" integer,
+    "METHOD" integer,
+    "CROSS" character varying(150),
+    "CROSSDATE" integer,
+    "ALTNAME" character varying(50),
+    "ANTYPE" integer,
+    "RECNO" integer,
+    "GID" integer
+);
+
+
+--
+-- TOC entry 1790 (class 1259 OID 17727)
+-- Dependencies: 7
+-- Name: ims_label_otherinfo; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE ims_label_otherinfo (
+    "ID" integer NOT NULL,
+    "OTHERINFO_ID" integer NOT NULL,
+    "LABELINFO_ID" integer,
+    "GROUP_PREFIX" character varying(50),
+    "TABLENAME" character varying(50),
+    "FIELDNAME" character varying(50),
+    "FOREIGN_FIELDNAME" character varying(50)
+);
+
+
+--
+-- TOC entry 1791 (class 1259 OID 17730)
+-- Dependencies: 7
+-- Name: ims_labelinfo; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE ims_labelinfo (
+    "ID" integer NOT NULL,
+    "LABELINFO_ID" integer NOT NULL,
+    "GROUP_PREFIX" character varying(50),
+    "LABELITEMCOUNT" integer
+);
+
+
+--
+-- TOC entry 1792 (class 1259 OID 17733)
+-- Dependencies: 7
+-- Name: ims_lot; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE ims_lot (
+    "LOTID" integer,
+    "USERID" integer,
+    "ETYPE" character varying(15),
+    "EID" integer,
+    "LOCID" integer,
+    "SCALEID" integer,
+    "STATUS" integer,
+    "SOURCEID" integer,
+    "COMMENTS" character varying(255)
+);
+
+
+--
+-- TOC entry 1793 (class 1259 OID 17736)
+-- Dependencies: 7
+-- Name: ims_transaction; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE ims_transaction (
+    "TRNID" integer,
+    "USERID" integer,
+    "LOTID" integer,
+    "TRNDATE" integer,
+    "TRNSTAT" integer,
+    "TRNQTY" double precision,
+    "COMMENTS" character varying(255),
+    "CMTDATA" integer,
+    "SOURCETYPE" character varying(12),
+    "SOURCEID" integer,
+    "RECORDID" integer,
+    "PREVAMOUNT" double precision,
+    "PERSONID" integer
+);
+
+
+--
+-- TOC entry 1794 (class 1259 OID 17739)
+-- Dependencies: 7
+-- Name: institut; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE institut (
+    "INSTITID" integer NOT NULL,
+    "PINSID" integer NOT NULL,
+    "INSNAME" character varying(150) NOT NULL,
+    "INSACR" character varying(20) NOT NULL,
+    "INSTYPE" integer NOT NULL,
+    "STREET" character varying(125) NOT NULL,
+    "POSTBOX" character varying(25) NOT NULL,
+    "CITY" character varying(30) NOT NULL,
+    "STATEID" integer,
+    "CPOSTAL" character varying(10) NOT NULL,
+    "CNTRYID" integer NOT NULL,
+    "APHONE" character varying(25) NOT NULL,
+    "AFAX" character varying(25) NOT NULL,
+    "AEMAIL" character varying(40) NOT NULL,
+    "WEBURL" character varying(60) NOT NULL,
+    "SINS" integer NOT NULL,
+    "EINS" integer NOT NULL,
+    "ICHANGE" integer NOT NULL
+);
+
+
+--
+-- TOC entry 1795 (class 1259 OID 17745)
+-- Dependencies: 7
+-- Name: instln; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE instln (
+    "INSTALID" integer NOT NULL,
+    "ADMIN" integer NOT NULL,
+    "UDATE" integer NOT NULL,
+    "UGID" integer NOT NULL,
+    "ULOCN" integer NOT NULL,
+    "UCID" integer,
+    "UNID" integer,
+    "UAID" integer,
+    "ULDID" integer,
+    "UMETHN" integer NOT NULL,
+    "UFLDNO" integer NOT NULL,
+    "UREFNO" integer NOT NULL,
+    "UPID" integer,
+    "IDESC" character varying(255),
+    "ULISTID" integer,
+    "DMS_STATUS" integer NOT NULL,
+    "ULRECID" integer
+);
+
+
+--
+-- TOC entry 1796 (class 1259 OID 17748)
+-- Dependencies: 7
+-- Name: level_c; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE level_c (
+    "LABELID" integer,
+    "FACTORID" integer,
+    "LEVELNO" integer,
+    "LVALUE" character varying(255)
+);
+
+
+--
+-- TOC entry 1797 (class 1259 OID 17751)
+-- Dependencies: 7
+-- Name: level_n; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE level_n (
+    "LABELID" integer,
+    "FACTORID" integer,
+    "LEVELNO" integer,
+    "LVALUE" double precision
+);
+
+
+--
+-- TOC entry 1798 (class 1259 OID 17754)
+-- Dependencies: 7
+-- Name: level_t; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE level_t (
+    "FACTORID" integer,
+    "LEVELNO" integer,
+    "LVALUE" text,
+    "LABELID" integer
+);
+
+
+--
+-- TOC entry 1799 (class 1259 OID 17760)
+-- Dependencies: 7
+-- Name: levels; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE levels (
+    "LEVELNO" integer NOT NULL,
+    "FACTORID" integer NOT NULL
+);
+
+
+--
+-- TOC entry 1800 (class 1259 OID 17763)
+-- Dependencies: 7
+-- Name: listdata; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE listdata (
+    "LISTID" integer NOT NULL,
+    "GID" integer,
+    "ENTRYID" integer NOT NULL,
+    "ENTRYCD" character varying(47),
+    "SOURCE" character varying(255),
+    "DESIG" character varying(255),
+    "GRPNAME" character varying(255),
+    "LRSTATUS" integer,
+    "LRECID" integer NOT NULL,
+    "LLRECID" integer
+);
+
+
+--
+-- TOC entry 1801 (class 1259 OID 17769)
+-- Dependencies: 2102 7
+-- Name: listnms; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE listnms (
+    "LISTID" integer NOT NULL,
+    "LISTNAME" character varying(47) NOT NULL,
+    "LISTDATE" integer,
+    "LISTTYPE" character varying(7) DEFAULT 'LST'::character varying NOT NULL,
+    "LISTUID" integer,
+    "LISTDESC" character varying(255),
+    "LISTSTATUS" integer,
+    "LHIERARCHY" integer
+);
+
+
+--
+-- TOC entry 1802 (class 1259 OID 17773)
+-- Dependencies: 7
+-- Name: location; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE location (
+    "LOCID" integer NOT NULL,
+    "LTYPE" integer,
+    "NLLP" integer,
+    "LNAME" character varying(60),
+    "LABBR" character varying(8),
+    "SNL3ID" integer,
+    "SNL2ID" integer,
+    "SNL1ID" integer,
+    "CNTRYID" integer,
+    "LRPLCE" integer
+);
+
+
+--
+-- TOC entry 1803 (class 1259 OID 17776)
+-- Dependencies: 7
+-- Name: locdes; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE locdes (
+    "LDID" integer,
+    "LOCID" integer NOT NULL,
+    "DTYPE" integer NOT NULL,
+    "DUID" integer NOT NULL,
+    "DVAL" character varying(255),
+    "DDATE" integer,
+    "DREF" integer
+);
+
+
+--
+-- TOC entry 1804 (class 1259 OID 17779)
+-- Dependencies: 7
+-- Name: methods; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE methods (
+    "MID" integer NOT NULL,
+    "MTYPE" character varying(3),
+    "MGRP" character varying(3),
+    "MCODE" character varying(8),
+    "MNAME" character varying(50),
+    "MDESC" character varying(255),
+    "MREF" integer,
+    "MPRGN" integer,
+    "MFPRG" integer,
+    "MATTR" integer,
+    "GENEQ" integer,
+    "MUID" integer,
+    "LMID" integer,
+    "MDATE" integer
+);
+
+
+--
+-- TOC entry 1805 (class 1259 OID 17782)
+-- Dependencies: 7
+-- Name: names; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE names (
+    "NID" integer,
+    "GID" integer,
+    "NTYPE" integer,
+    "NSTAT" integer,
+    "NUID" integer,
+    "NVAL" character varying(255),
+    "NLOCN" integer,
+    "NDATE" integer,
+    "NREF" integer
+);
+
+
+--
+-- TOC entry 1806 (class 1259 OID 17785)
+-- Dependencies: 7
+-- Name: obsunit; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE obsunit (
+    "OUNITID" integer NOT NULL,
+    "EFFECTID" integer NOT NULL
+);
+
+
+--
+-- TOC entry 1807 (class 1259 OID 17788)
+-- Dependencies: 7
+-- Name: oindex; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE oindex (
+    "OUNITID" integer,
+    "FACTORID" integer,
+    "LEVELNO" integer,
+    "REPRESNO" integer
+);
+
+
+--
+-- TOC entry 1808 (class 1259 OID 17791)
+-- Dependencies: 7
+-- Name: persons; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE persons (
+    "PERSONID" integer NOT NULL,
+    "FNAME" character varying(20) NOT NULL,
+    "LNAME" character varying(50) NOT NULL,
+    "IONAME" character varying(15) NOT NULL,
+    "INSTITID" integer NOT NULL,
+    "PTITLE" character varying(25) NOT NULL,
+    "PONAME" character varying(50) NOT NULL,
+    "PLANGU" integer NOT NULL,
+    "PPHONE" character varying(20) NOT NULL,
+    "PEXTENT" character varying(20) NOT NULL,
+    "PFAX" character varying(20) NOT NULL,
+    "PEMAIL" character varying(40) NOT NULL,
+    "PROLE" integer NOT NULL,
+    "SPERSON" integer NOT NULL,
+    "EPERSON" integer NOT NULL,
+    "PSTATUS" integer NOT NULL,
+    "PNOTES" text,
+    "CONTACT" character varying(255)
+);
+
+
+--
+-- TOC entry 1809 (class 1259 OID 17797)
+-- Dependencies: 7
+-- Name: progntrs; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE progntrs (
+    "GID" integer,
+    "PNO" integer,
+    "PID" integer
+);
+
+
+--
+-- TOC entry 1810 (class 1259 OID 17800)
+-- Dependencies: 7
+-- Name: reflinks; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE reflinks (
+    "BREFLID" integer NOT NULL,
+    "BTABLE" integer NOT NULL,
+    "BRECORD" integer NOT NULL
+);
+
+
+--
+-- TOC entry 1811 (class 1259 OID 17803)
+-- Dependencies: 7
+-- Name: represtn; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE represtn (
+    "REPRESNO" integer NOT NULL,
+    "EFFECTID" integer NOT NULL,
+    "REPRESNAME" character varying(150) NOT NULL
+);
+
+
+--
+-- TOC entry 1812 (class 1259 OID 17806)
+-- Dependencies: 7
+-- Name: scale; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE scale (
+    "SCALEID" integer NOT NULL,
+    "SCNAME" character varying(50),
+    "TRAITID" integer,
+    "SCTYPE" character varying(1)
+);
+
+
+--
+-- TOC entry 1813 (class 1259 OID 17809)
+-- Dependencies: 7
+-- Name: scale_bak; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE scale_bak (
+    "SCALEID" integer NOT NULL,
+    "SCNAME" character varying(30),
+    "TRAITID" integer,
+    "SCTYPE" character varying(1)
+);
+
+
+--
+-- TOC entry 1814 (class 1259 OID 17812)
+-- Dependencies: 7
+-- Name: scalecon; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE scalecon (
+    "SCALEID" integer NOT NULL,
+    "SLEVEL" double precision NOT NULL,
+    "ELEVEL" double precision NOT NULL
+);
+
+
+--
+-- TOC entry 1815 (class 1259 OID 17815)
+-- Dependencies: 7
+-- Name: scaledis; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE scaledis (
+    "SCALEID" integer NOT NULL,
+    "VALUE" character varying(10) NOT NULL,
+    "VALDESC" character varying(255) NOT NULL
+);
+
+
+--
+-- TOC entry 1816 (class 1259 OID 17818)
+-- Dependencies: 7
+-- Name: scaletab; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE scaletab (
+    "SCALEID" integer NOT NULL,
+    "SSQL" character varying(250) NOT NULL,
+    "SMODULE" character varying(5) NOT NULL
+);
+
+
+--
+-- TOC entry 1817 (class 1259 OID 17821)
+-- Dependencies: 7
+-- Name: steffect; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE steffect (
+    "EFFECTID" integer NOT NULL,
+    "STUDYID" integer NOT NULL,
+    "EFFECTNAME" character varying(150) NOT NULL
+);
+
+
+--
+-- TOC entry 1818 (class 1259 OID 17824)
+-- Dependencies: 2103 7
+-- Name: study; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE study (
+    "STUDYID" integer NOT NULL,
+    "SNAME" character varying(50),
+    "PMKEY" integer,
+    "TITLE" character varying(255),
+    "OBJECTIV" text,
+    "INVESTID" integer,
+    "STYPE" character varying(1),
+    "SDATE" integer,
+    "EDATE" integer,
+    "USERID" integer,
+    "SSTATUS" integer DEFAULT 1,
+    "SHIERARCHY" integer
+);
+
+
+--
+-- TOC entry 1819 (class 1259 OID 17831)
+-- Dependencies: 7
+-- Name: tmethod; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tmethod (
+    "TMETHID" integer NOT NULL,
+    "TMNAME" character varying(50),
+    "TRAITID" integer,
+    "TMABBR" character varying(6),
+    "TMDESC" text
+);
+
+
+--
+-- TOC entry 1820 (class 1259 OID 17837)
+-- Dependencies: 7
+-- Name: trait; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE trait (
+    "TID" integer,
+    "TRAITID" integer,
+    "TRNAME" character varying(50),
+    "TRABBR" character varying(6),
+    "TRDESC" text,
+    "SCALEID" integer,
+    "TMETHID" integer,
+    "TNSTAT" integer
+);
+
+
+--
+-- TOC entry 1821 (class 1259 OID 17843)
+-- Dependencies: 7
+-- Name: udflds; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE udflds (
+    "FLDNO" integer NOT NULL,
+    "FTABLE" character varying(24),
+    "FTYPE" character varying(12),
+    "FCODE" character varying(50),
+    "FNAME" character varying(50),
+    "FFMT" character varying(255),
+    "FDESC" character varying(255),
+    "LFLDNO" integer,
+    "FUID" integer,
+    "FDATE" integer,
+    "SCALEID" integer
+);
+
+
+--
+-- TOC entry 1822 (class 1259 OID 17849)
+-- Dependencies: 7
+-- Name: users; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE users (
+    "USERID" integer NOT NULL,
+    "INSTALID" integer,
+    "USTATUS" integer,
+    "UACCESS" integer,
+    "UTYPE" integer,
+    "UNAME" character varying(30),
+    "UPSWD" character varying(10),
+    "PERSONID" integer,
+    "ADATE" integer,
+    "CDATE" integer
+);
+
+
+--
+-- TOC entry 1823 (class 1259 OID 17852)
+-- Dependencies: 7
+-- Name: variate; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE variate (
+    "VARIATID" integer NOT NULL,
+    "VNAME" character varying(50),
+    "STUDYID" integer,
+    "VTYPE" character varying(2),
+    "TRAITID" integer,
+    "SCALEID" integer,
+    "TMETHID" integer,
+    "DTYPE" character varying(1)
+);
+
+
+--
+-- TOC entry 1824 (class 1259 OID 17855)
+-- Dependencies: 7
+-- Name: veffect; Type: TABLE; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE TABLE veffect (
+    "REPRESNO" integer NOT NULL,
+    "VARIATID" integer
+);
+
+
+--
+-- TOC entry 2137 (class 2606 OID 17871)
+-- Dependencies: 1782 1782
+-- Name: FLDNO; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY dudflds
+    ADD CONSTRAINT "FLDNO" UNIQUE ("FLDNO");
+
+
+--
+-- TOC entry 2223 (class 2606 OID 17891)
+-- Dependencies: 1801 1801
+-- Name: LISTID_2; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY listnms
+    ADD CONSTRAINT "LISTID_2" UNIQUE ("LISTID");
+
+
+--
+-- TOC entry 2162 (class 2606 OID 17877)
+-- Dependencies: 1787 1787
+-- Name: RECNO; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY i_accession
+    ADD CONSTRAINT "RECNO" UNIQUE ("RECNO");
+
+
+--
+-- TOC entry 2110 (class 2606 OID 17862)
+-- Dependencies: 1775 1775
+-- Name: bibrefs_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY bibrefs
+    ADD CONSTRAINT bibrefs_pkey PRIMARY KEY ("REFID");
+
+
+--
+-- TOC entry 2116 (class 2606 OID 17865)
+-- Dependencies: 1776 1776
+-- Name: changes_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY changes
+    ADD CONSTRAINT changes_pkey PRIMARY KEY ("CID");
+
+
+--
+-- TOC entry 2131 (class 2606 OID 17867)
+-- Dependencies: 1780 1780
+-- Name: datattr_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY datattr
+    ADD CONSTRAINT datattr_pkey PRIMARY KEY ("DATTRID");
+
+
+--
+-- TOC entry 2134 (class 2606 OID 17869)
+-- Dependencies: 1781 1781
+-- Name: dmsattr_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY dmsattr
+    ADD CONSTRAINT dmsattr_pkey PRIMARY KEY ("DMSATID");
+
+
+--
+-- TOC entry 2147 (class 2606 OID 17873)
+-- Dependencies: 1784 1784
+-- Name: factor_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY factor
+    ADD CONSTRAINT factor_pkey PRIMARY KEY ("LABELID");
+
+
+--
+-- TOC entry 2157 (class 2606 OID 17875)
+-- Dependencies: 1786 1786
+-- Name: germplsm_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY germplsm
+    ADD CONSTRAINT germplsm_pkey PRIMARY KEY ("GID");
+
+
+--
+-- TOC entry 2171 (class 2606 OID 17879)
+-- Dependencies: 1790 1790
+-- Name: ims_label_otherinfo_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY ims_label_otherinfo
+    ADD CONSTRAINT ims_label_otherinfo_pkey PRIMARY KEY ("OTHERINFO_ID");
+
+
+--
+-- TOC entry 2175 (class 2606 OID 17881)
+-- Dependencies: 1791 1791
+-- Name: ims_labelinfo_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY ims_labelinfo
+    ADD CONSTRAINT ims_labelinfo_pkey PRIMARY KEY ("LABELINFO_ID");
+
+
+--
+-- TOC entry 2192 (class 2606 OID 17883)
+-- Dependencies: 1794 1794
+-- Name: institut_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY institut
+    ADD CONSTRAINT institut_pkey PRIMARY KEY ("INSTITID");
+
+
+--
+-- TOC entry 2211 (class 2606 OID 17885)
+-- Dependencies: 1799 1799
+-- Name: levels_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY levels
+    ADD CONSTRAINT levels_pkey PRIMARY KEY ("LEVELNO");
+
+
+--
+-- TOC entry 2220 (class 2606 OID 17887)
+-- Dependencies: 1800 1800 1800
+-- Name: listdata_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY listdata
+    ADD CONSTRAINT listdata_pkey PRIMARY KEY ("LISTID", "LRECID");
+
+
+--
+-- TOC entry 2226 (class 2606 OID 17889)
+-- Dependencies: 1801 1801
+-- Name: listnms_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY listnms
+    ADD CONSTRAINT listnms_pkey PRIMARY KEY ("LISTID");
+
+
+--
+-- TOC entry 2232 (class 2606 OID 17893)
+-- Dependencies: 1802 1802
+-- Name: location_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY location
+    ADD CONSTRAINT location_pkey PRIMARY KEY ("LOCID");
+
+
+--
+-- TOC entry 2241 (class 2606 OID 17895)
+-- Dependencies: 1804 1804
+-- Name: methods_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY methods
+    ADD CONSTRAINT methods_pkey PRIMARY KEY ("MID");
+
+
+--
+-- TOC entry 2249 (class 2606 OID 17897)
+-- Dependencies: 1806 1806
+-- Name: obsunit_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY obsunit
+    ADD CONSTRAINT obsunit_pkey PRIMARY KEY ("OUNITID");
+
+
+--
+-- TOC entry 2254 (class 2606 OID 17899)
+-- Dependencies: 1808 1808
+-- Name: persons_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY persons
+    ADD CONSTRAINT persons_pkey PRIMARY KEY ("PERSONID");
+
+
+--
+-- TOC entry 2260 (class 2606 OID 17901)
+-- Dependencies: 1811 1811
+-- Name: represtn_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY represtn
+    ADD CONSTRAINT represtn_pkey PRIMARY KEY ("REPRESNO");
+
+
+--
+-- TOC entry 2270 (class 2606 OID 17905)
+-- Dependencies: 1813 1813
+-- Name: scale_bak_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY scale_bak
+    ADD CONSTRAINT scale_bak_pkey PRIMARY KEY ("SCALEID");
+
+
+--
+-- TOC entry 2265 (class 2606 OID 17903)
+-- Dependencies: 1812 1812
+-- Name: scale_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY scale
+    ADD CONSTRAINT scale_pkey PRIMARY KEY ("SCALEID");
+
+
+--
+-- TOC entry 2277 (class 2606 OID 17907)
+-- Dependencies: 1818 1818
+-- Name: study_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY study
+    ADD CONSTRAINT study_pkey PRIMARY KEY ("STUDYID");
+
+
+--
+-- TOC entry 2282 (class 2606 OID 17909)
+-- Dependencies: 1819 1819
+-- Name: tmethod_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY tmethod
+    ADD CONSTRAINT tmethod_pkey PRIMARY KEY ("TMETHID");
+
+
+--
+-- TOC entry 2291 (class 2606 OID 17911)
+-- Dependencies: 1821 1821
+-- Name: udflds_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY udflds
+    ADD CONSTRAINT udflds_pkey PRIMARY KEY ("FLDNO");
+
+
+--
+-- TOC entry 2295 (class 2606 OID 17913)
+-- Dependencies: 1822 1822
+-- Name: users_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY ("USERID");
+
+
+--
+-- TOC entry 2299 (class 2606 OID 17915)
+-- Dependencies: 1823 1823
+-- Name: variate_pkey; Type: CONSTRAINT; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY variate
+    ADD CONSTRAINT variate_pkey PRIMARY KEY ("VARIATID");
+
+
+--
+-- TOC entry 2193 (class 1259 OID 17984)
+-- Dependencies: 1795
+-- Name: ADMIN; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "ADMIN" ON instln USING btree ("ADMIN");
+
+
+--
+-- TOC entry 2104 (class 1259 OID 17916)
+-- Dependencies: 1774
+-- Name: AID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "AID" ON atributs USING btree ("AID");
+
+
+--
+-- TOC entry 2105 (class 1259 OID 17917)
+-- Dependencies: 1774
+-- Name: ALOCN; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "ALOCN" ON atributs USING btree ("ALOCN");
+
+
+--
+-- TOC entry 2158 (class 1259 OID 17956)
+-- Dependencies: 1787
+-- Name: ALTERID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "ALTERID" ON i_accession USING btree ("ALTERID");
+
+
+--
+-- TOC entry 2106 (class 1259 OID 17918)
+-- Dependencies: 1774
+-- Name: ATYPE; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "ATYPE" ON atributs USING btree ("ATYPE");
+
+
+--
+-- TOC entry 2107 (class 1259 OID 17919)
+-- Dependencies: 1774
+-- Name: AUID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "AUID" ON atributs USING btree ("AUID");
+
+
+--
+-- TOC entry 2163 (class 1259 OID 17959)
+-- Dependencies: 1788
+-- Name: BCID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "BCID" ON i_bchist USING btree ("BCID");
+
+
+--
+-- TOC entry 2258 (class 1259 OID 18032)
+-- Dependencies: 1810
+-- Name: BREFLID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "BREFLID" ON reflinks USING btree ("BREFLID");
+
+
+--
+-- TOC entry 2111 (class 1259 OID 17922)
+-- Dependencies: 1776 1776 1776
+-- Name: CID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "CID" ON changes USING btree ("CID", "CRECORD", "CTABLE");
+
+
+--
+-- TOC entry 2188 (class 1259 OID 17980)
+-- Dependencies: 1794
+-- Name: CNTRYID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "CNTRYID" ON institut USING btree ("CNTRYID");
+
+
+--
+-- TOC entry 2227 (class 1259 OID 18009)
+-- Dependencies: 1802
+-- Name: CNTRYID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "CNTRYID1" ON location USING btree ("CNTRYID");
+
+
+--
+-- TOC entry 2112 (class 1259 OID 17921)
+-- Dependencies: 1776
+-- Name: CRECORD; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "CRECORD" ON changes USING btree ("CRECORD");
+
+
+--
+-- TOC entry 2113 (class 1259 OID 17923)
+-- Dependencies: 1776 1776 1776 1776 1776 1776
+-- Name: CTABLE; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "CTABLE" ON changes USING btree ("CTABLE", "CFIELD", "CRECORD", "CFROM", "CTO", "CSTATUS");
+
+
+--
+-- TOC entry 2114 (class 1259 OID 17924)
+-- Dependencies: 1776 1776 1776 1776 1776
+-- Name: CTABLE_2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "CTABLE_2" ON changes USING btree ("CTABLE", "CRECORD", "CFIELD", "CFROM", "CSTATUS");
+
+
+--
+-- TOC entry 2127 (class 1259 OID 17935)
+-- Dependencies: 1780
+-- Name: DATTRID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "DATTRID" ON datattr USING btree ("DATTRID");
+
+
+--
+-- TOC entry 2132 (class 1259 OID 17938)
+-- Dependencies: 1781
+-- Name: DMSATID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "DMSATID" ON dmsattr USING btree ("DMSATID");
+
+
+--
+-- TOC entry 2159 (class 1259 OID 17957)
+-- Dependencies: 1787
+-- Name: DNRID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "DNRID" ON i_accession USING btree ("DNRID");
+
+
+--
+-- TOC entry 2233 (class 1259 OID 18013)
+-- Dependencies: 1803
+-- Name: DTYPE; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "DTYPE" ON locdes USING btree ("DTYPE");
+
+
+--
+-- TOC entry 2234 (class 1259 OID 18014)
+-- Dependencies: 1803
+-- Name: DUID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "DUID" ON locdes USING btree ("DUID");
+
+
+--
+-- TOC entry 2117 (class 1259 OID 17925)
+-- Dependencies: 1777
+-- Name: DVALUE; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "DVALUE" ON data_c USING btree ("DVALUE");
+
+
+--
+-- TOC entry 2121 (class 1259 OID 17929)
+-- Dependencies: 1778
+-- Name: DVALUE1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "DVALUE1" ON data_n USING btree ("DVALUE");
+
+
+--
+-- TOC entry 2140 (class 1259 OID 17943)
+-- Dependencies: 1783
+-- Name: EFFECTID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "EFFECTID" ON effect USING btree ("EFFECTID");
+
+
+--
+-- TOC entry 2176 (class 1259 OID 17968)
+-- Dependencies: 1792
+-- Name: EID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "EID" ON ims_lot USING btree ("EID");
+
+
+--
+-- TOC entry 2212 (class 1259 OID 18000)
+-- Dependencies: 1800
+-- Name: ENTRYCD; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "ENTRYCD" ON listdata USING btree ("ENTRYCD");
+
+
+--
+-- TOC entry 2213 (class 1259 OID 18001)
+-- Dependencies: 1800
+-- Name: ENTRYID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "ENTRYID" ON listdata USING btree ("ENTRYID");
+
+
+--
+-- TOC entry 2141 (class 1259 OID 17944)
+-- Dependencies: 1783
+-- Name: FACTORID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FACTORID" ON effect USING btree ("FACTORID");
+
+
+--
+-- TOC entry 2143 (class 1259 OID 17945)
+-- Dependencies: 1784
+-- Name: FACTORID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FACTORID1" ON factor USING btree ("FACTORID");
+
+
+--
+-- TOC entry 2201 (class 1259 OID 17992)
+-- Dependencies: 1796 1796
+-- Name: FACTORID2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FACTORID2" ON level_c USING btree ("FACTORID", "LEVELNO");
+
+
+--
+-- TOC entry 2205 (class 1259 OID 17996)
+-- Dependencies: 1797 1797
+-- Name: FACTORID3; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FACTORID3" ON level_n USING btree ("FACTORID", "LEVELNO");
+
+
+--
+-- TOC entry 2208 (class 1259 OID 17998)
+-- Dependencies: 1798 1798
+-- Name: FACTORID4; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FACTORID4" ON level_t USING btree ("FACTORID", "LEVELNO");
+
+
+--
+-- TOC entry 2250 (class 1259 OID 18026)
+-- Dependencies: 1807 1807
+-- Name: FACTORID5; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FACTORID5" ON oindex USING btree ("FACTORID", "LEVELNO");
+
+
+--
+-- TOC entry 2202 (class 1259 OID 17993)
+-- Dependencies: 1796
+-- Name: FACTORID_2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FACTORID_2" ON level_c USING btree ("FACTORID");
+
+
+--
+-- TOC entry 2206 (class 1259 OID 17997)
+-- Dependencies: 1797 1797
+-- Name: FACTORID_21; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FACTORID_21" ON level_n USING btree ("FACTORID", "LVALUE");
+
+
+--
+-- TOC entry 2209 (class 1259 OID 17999)
+-- Dependencies: 1798
+-- Name: FACTORID_22; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FACTORID_22" ON level_t USING btree ("FACTORID");
+
+
+--
+-- TOC entry 2203 (class 1259 OID 17994)
+-- Dependencies: 1796 1796
+-- Name: FACTORID_3; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FACTORID_3" ON level_c USING btree ("FACTORID", "LVALUE");
+
+
+--
+-- TOC entry 2135 (class 1259 OID 17939)
+-- Dependencies: 1782
+-- Name: FCODE; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FCODE" ON dudflds USING btree ("FCODE");
+
+
+--
+-- TOC entry 2287 (class 1259 OID 18051)
+-- Dependencies: 1821
+-- Name: FCODE1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FCODE1" ON udflds USING btree ("FCODE");
+
+
+--
+-- TOC entry 2138 (class 1259 OID 17940)
+-- Dependencies: 1782
+-- Name: FUID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FUID" ON dudflds USING btree ("FUID");
+
+
+--
+-- TOC entry 2288 (class 1259 OID 18052)
+-- Dependencies: 1821
+-- Name: FUID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "FUID1" ON udflds USING btree ("FUID");
+
+
+--
+-- TOC entry 2149 (class 1259 OID 17952)
+-- Dependencies: 1786
+-- Name: GERMUID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GERMUID" ON germplsm USING btree ("GERMUID");
+
+
+--
+-- TOC entry 2108 (class 1259 OID 17920)
+-- Dependencies: 1774
+-- Name: GID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GID" ON atributs USING btree ("GID");
+
+
+--
+-- TOC entry 2160 (class 1259 OID 17958)
+-- Dependencies: 1787
+-- Name: GID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GID1" ON i_accession USING btree ("GID");
+
+
+--
+-- TOC entry 2164 (class 1259 OID 17960)
+-- Dependencies: 1788
+-- Name: GID2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GID2" ON i_bchist USING btree ("GID");
+
+
+--
+-- TOC entry 2165 (class 1259 OID 17962)
+-- Dependencies: 1789
+-- Name: GID3; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GID3" ON i_cultlist USING btree ("GID");
+
+
+--
+-- TOC entry 2214 (class 1259 OID 18002)
+-- Dependencies: 1800
+-- Name: GID4; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GID4" ON listdata USING btree ("GID");
+
+
+--
+-- TOC entry 2242 (class 1259 OID 18020)
+-- Dependencies: 1805
+-- Name: GID5; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GID5" ON names USING btree ("GID");
+
+
+--
+-- TOC entry 2255 (class 1259 OID 18029)
+-- Dependencies: 1809
+-- Name: GID6; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GID6" ON progntrs USING btree ("GID");
+
+
+--
+-- TOC entry 2150 (class 1259 OID 17949)
+-- Dependencies: 1786
+-- Name: GLOCN; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GLOCN" ON germplsm USING btree ("GLOCN");
+
+
+--
+-- TOC entry 2151 (class 1259 OID 17950)
+-- Dependencies: 1786
+-- Name: GPID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GPID1" ON germplsm USING btree ("GPID1");
+
+
+--
+-- TOC entry 2152 (class 1259 OID 17951)
+-- Dependencies: 1786
+-- Name: GPID2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "GPID2" ON germplsm USING btree ("GPID2");
+
+
+--
+-- TOC entry 2167 (class 1259 OID 17963)
+-- Dependencies: 1790
+-- Name: ID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "ID" ON ims_label_otherinfo USING btree ("ID");
+
+
+--
+-- TOC entry 2172 (class 1259 OID 17966)
+-- Dependencies: 1791
+-- Name: ID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "ID1" ON ims_labelinfo USING btree ("ID");
+
+
+--
+-- TOC entry 2194 (class 1259 OID 17983)
+-- Dependencies: 1795
+-- Name: INSTALID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "INSTALID" ON instln USING btree ("INSTALID");
+
+
+--
+-- TOC entry 2292 (class 1259 OID 18054)
+-- Dependencies: 1822
+-- Name: INSTALID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "INSTALID1" ON users USING btree ("INSTALID");
+
+
+--
+-- TOC entry 2252 (class 1259 OID 18028)
+-- Dependencies: 1808
+-- Name: INSTITID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "INSTITID" ON persons USING btree ("INSTITID");
+
+
+--
+-- TOC entry 2273 (class 1259 OID 18041)
+-- Dependencies: 1818
+-- Name: INVESTID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "INVESTID" ON study USING btree ("INVESTID");
+
+
+--
+-- TOC entry 2204 (class 1259 OID 17991)
+-- Dependencies: 1796
+-- Name: LABELID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LABELID" ON level_c USING btree ("LABELID");
+
+
+--
+-- TOC entry 2207 (class 1259 OID 17995)
+-- Dependencies: 1797
+-- Name: LABELID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LABELID1" ON level_n USING btree ("LABELID");
+
+
+--
+-- TOC entry 2168 (class 1259 OID 17964)
+-- Dependencies: 1790
+-- Name: LABELINFO_ID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LABELINFO_ID" ON ims_label_otherinfo USING btree ("LABELINFO_ID");
+
+
+--
+-- TOC entry 2173 (class 1259 OID 17967)
+-- Dependencies: 1791
+-- Name: LABELINFO_ID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LABELINFO_ID1" ON ims_labelinfo USING btree ("LABELINFO_ID");
+
+
+--
+-- TOC entry 2235 (class 1259 OID 18016)
+-- Dependencies: 1803
+-- Name: LDID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LDID" ON locdes USING btree ("LDID");
+
+
+--
+-- TOC entry 2153 (class 1259 OID 17953)
+-- Dependencies: 1786
+-- Name: LGID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LGID" ON germplsm USING btree ("LGID");
+
+
+--
+-- TOC entry 2215 (class 1259 OID 18003)
+-- Dependencies: 1800 1800 1800
+-- Name: LISTID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LISTID" ON listdata USING btree ("LISTID", "GID", "LRSTATUS");
+
+
+--
+-- TOC entry 2221 (class 1259 OID 18007)
+-- Dependencies: 1801 1801
+-- Name: LISTID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LISTID1" ON listnms USING btree ("LISTID", "LHIERARCHY");
+
+
+--
+-- TOC entry 2216 (class 1259 OID 18004)
+-- Dependencies: 1800 1800 1800
+-- Name: LISTID_21; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LISTID_21" ON listdata USING btree ("LISTID", "ENTRYID", "LRSTATUS");
+
+
+--
+-- TOC entry 2217 (class 1259 OID 18005)
+-- Dependencies: 1800
+-- Name: LISTID_3; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LISTID_3" ON listdata USING btree ("LISTID");
+
+
+--
+-- TOC entry 2224 (class 1259 OID 18008)
+-- Dependencies: 1801
+-- Name: LISTUID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LISTUID" ON listnms USING btree ("LISTUID");
+
+
+--
+-- TOC entry 2237 (class 1259 OID 18017)
+-- Dependencies: 1804
+-- Name: LMID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LMID" ON methods USING btree ("LMID");
+
+
+--
+-- TOC entry 2148 (class 1259 OID 17948)
+-- Dependencies: 1785
+-- Name: LOCID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LOCID" ON georef USING btree ("LOCID");
+
+
+--
+-- TOC entry 2177 (class 1259 OID 17969)
+-- Dependencies: 1792
+-- Name: LOCID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LOCID1" ON ims_lot USING btree ("LOCID");
+
+
+--
+-- TOC entry 2236 (class 1259 OID 18015)
+-- Dependencies: 1803
+-- Name: LOCID2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LOCID2" ON locdes USING btree ("LOCID");
+
+
+--
+-- TOC entry 2178 (class 1259 OID 17970)
+-- Dependencies: 1792
+-- Name: LOTID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LOTID" ON ims_lot USING btree ("LOTID");
+
+
+--
+-- TOC entry 2182 (class 1259 OID 17974)
+-- Dependencies: 1793
+-- Name: LOTID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "LOTID1" ON ims_transaction USING btree ("LOTID");
+
+
+--
+-- TOC entry 2238 (class 1259 OID 18018)
+-- Dependencies: 1804
+-- Name: MCODE; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "MCODE" ON methods USING btree ("MCODE");
+
+
+--
+-- TOC entry 2154 (class 1259 OID 17954)
+-- Dependencies: 1786
+-- Name: METHN; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "METHN" ON germplsm USING btree ("METHN");
+
+
+--
+-- TOC entry 2155 (class 1259 OID 17955)
+-- Dependencies: 1786
+-- Name: MGID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "MGID" ON germplsm USING btree ("MGID");
+
+
+--
+-- TOC entry 2239 (class 1259 OID 18019)
+-- Dependencies: 1804
+-- Name: MUID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "MUID" ON methods USING btree ("MUID");
+
+
+--
+-- TOC entry 2166 (class 1259 OID 17961)
+-- Dependencies: 1789
+-- Name: NAME; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "NAME" ON i_cultlist USING btree ("NAME");
+
+
+--
+-- TOC entry 2243 (class 1259 OID 18021)
+-- Dependencies: 1805
+-- Name: NID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "NID" ON names USING btree ("NID");
+
+
+--
+-- TOC entry 2244 (class 1259 OID 18022)
+-- Dependencies: 1805
+-- Name: NLOCN; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "NLOCN" ON names USING btree ("NLOCN");
+
+
+--
+-- TOC entry 2245 (class 1259 OID 18023)
+-- Dependencies: 1805
+-- Name: NTYPE; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "NTYPE" ON names USING btree ("NTYPE");
+
+
+--
+-- TOC entry 2246 (class 1259 OID 18024)
+-- Dependencies: 1805
+-- Name: NUID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "NUID" ON names USING btree ("NUID");
+
+
+--
+-- TOC entry 2247 (class 1259 OID 18025)
+-- Dependencies: 1805
+-- Name: NVAL; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "NVAL" ON names USING btree ("NVAL");
+
+
+--
+-- TOC entry 2169 (class 1259 OID 17965)
+-- Dependencies: 1790
+-- Name: OTHERINFO_ID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "OTHERINFO_ID" ON ims_label_otherinfo USING btree ("OTHERINFO_ID");
+
+
+--
+-- TOC entry 2118 (class 1259 OID 17926)
+-- Dependencies: 1777
+-- Name: OUNITID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "OUNITID" ON data_c USING btree ("OUNITID");
+
+
+--
+-- TOC entry 2122 (class 1259 OID 17930)
+-- Dependencies: 1778 1778
+-- Name: OUNITID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "OUNITID1" ON data_n USING btree ("OUNITID", "VARIATID");
+
+
+--
+-- TOC entry 2125 (class 1259 OID 17933)
+-- Dependencies: 1779 1779
+-- Name: OUNITID2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "OUNITID2" ON data_t USING btree ("OUNITID", "VARIATID");
+
+
+--
+-- TOC entry 2128 (class 1259 OID 17936)
+-- Dependencies: 1780
+-- Name: OUNITID3; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "OUNITID3" ON datattr USING btree ("OUNITID");
+
+
+--
+-- TOC entry 2251 (class 1259 OID 18027)
+-- Dependencies: 1807
+-- Name: OUNITID4; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "OUNITID4" ON oindex USING btree ("OUNITID");
+
+
+--
+-- TOC entry 2119 (class 1259 OID 17927)
+-- Dependencies: 1777 1777
+-- Name: OUNITID_2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "OUNITID_2" ON data_c USING btree ("OUNITID", "VARIATID");
+
+
+--
+-- TOC entry 2123 (class 1259 OID 17931)
+-- Dependencies: 1778
+-- Name: OUNITID_21; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "OUNITID_21" ON data_n USING btree ("OUNITID");
+
+
+--
+-- TOC entry 2139 (class 1259 OID 17941)
+-- Dependencies: 1782
+-- Name: OldFLDID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "OldFLDID" ON dudflds USING btree ("OldFLDID");
+
+
+--
+-- TOC entry 2183 (class 1259 OID 17975)
+-- Dependencies: 1793
+-- Name: PERSONID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "PERSONID" ON ims_transaction USING btree ("PERSONID");
+
+
+--
+-- TOC entry 2293 (class 1259 OID 18055)
+-- Dependencies: 1822
+-- Name: PERSONID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "PERSONID1" ON users USING btree ("PERSONID");
+
+
+--
+-- TOC entry 2256 (class 1259 OID 18030)
+-- Dependencies: 1809
+-- Name: PID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "PID" ON progntrs USING btree ("PID");
+
+
+--
+-- TOC entry 2189 (class 1259 OID 17981)
+-- Dependencies: 1794
+-- Name: PINSID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "PINSID" ON institut USING btree ("PINSID");
+
+
+--
+-- TOC entry 2274 (class 1259 OID 18042)
+-- Dependencies: 1818
+-- Name: PMKEY; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "PMKEY" ON study USING btree ("PMKEY");
+
+
+--
+-- TOC entry 2257 (class 1259 OID 18031)
+-- Dependencies: 1809
+-- Name: PNO; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "PNO" ON progntrs USING btree ("PNO");
+
+
+--
+-- TOC entry 2184 (class 1259 OID 17976)
+-- Dependencies: 1793
+-- Name: RECORDID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "RECORDID" ON ims_transaction USING btree ("RECORDID");
+
+
+--
+-- TOC entry 2142 (class 1259 OID 17942)
+-- Dependencies: 1783
+-- Name: REPRESNO; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "REPRESNO" ON effect USING btree ("REPRESNO");
+
+
+--
+-- TOC entry 2300 (class 1259 OID 18058)
+-- Dependencies: 1824
+-- Name: REPRESNO1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "REPRESNO1" ON veffect USING btree ("REPRESNO");
+
+
+--
+-- TOC entry 2179 (class 1259 OID 17971)
+-- Dependencies: 1792
+-- Name: SCALEID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SCALEID" ON ims_lot USING btree ("SCALEID");
+
+
+--
+-- TOC entry 2261 (class 1259 OID 18033)
+-- Dependencies: 1812
+-- Name: SCALEID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SCALEID1" ON scale USING btree ("SCALEID");
+
+
+--
+-- TOC entry 2266 (class 1259 OID 18036)
+-- Dependencies: 1813
+-- Name: SCALEID2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SCALEID2" ON scale_bak USING btree ("SCALEID");
+
+
+--
+-- TOC entry 2271 (class 1259 OID 18039)
+-- Dependencies: 1814
+-- Name: SCALEID3; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SCALEID3" ON scalecon USING btree ("SCALEID");
+
+
+--
+-- TOC entry 2272 (class 1259 OID 18040)
+-- Dependencies: 1815
+-- Name: SCALEID4; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SCALEID4" ON scaledis USING btree ("SCALEID");
+
+
+--
+-- TOC entry 2283 (class 1259 OID 18048)
+-- Dependencies: 1820
+-- Name: SCALEID5; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SCALEID5" ON trait USING btree ("SCALEID");
+
+
+--
+-- TOC entry 2289 (class 1259 OID 18053)
+-- Dependencies: 1821
+-- Name: SCALEID6; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SCALEID6" ON udflds USING btree ("SCALEID");
+
+
+--
+-- TOC entry 2275 (class 1259 OID 18043)
+-- Dependencies: 1818
+-- Name: SNAME; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SNAME" ON study USING btree ("SNAME");
+
+
+--
+-- TOC entry 2228 (class 1259 OID 18010)
+-- Dependencies: 1802
+-- Name: SNL1ID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SNL1ID" ON location USING btree ("SNL1ID");
+
+
+--
+-- TOC entry 2229 (class 1259 OID 18011)
+-- Dependencies: 1802
+-- Name: SNL2ID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SNL2ID" ON location USING btree ("SNL2ID");
+
+
+--
+-- TOC entry 2230 (class 1259 OID 18012)
+-- Dependencies: 1802
+-- Name: SNL3ID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SNL3ID" ON location USING btree ("SNL3ID");
+
+
+--
+-- TOC entry 2218 (class 1259 OID 18006)
+-- Dependencies: 1800
+-- Name: SOURCE; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SOURCE" ON listdata USING btree ("SOURCE");
+
+
+--
+-- TOC entry 2180 (class 1259 OID 17972)
+-- Dependencies: 1792
+-- Name: SOURCEID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SOURCEID" ON ims_lot USING btree ("SOURCEID");
+
+
+--
+-- TOC entry 2185 (class 1259 OID 17977)
+-- Dependencies: 1793
+-- Name: SOURCEID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "SOURCEID1" ON ims_transaction USING btree ("SOURCEID");
+
+
+--
+-- TOC entry 2190 (class 1259 OID 17982)
+-- Dependencies: 1794
+-- Name: STATEID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "STATEID" ON institut USING btree ("STATEID");
+
+
+--
+-- TOC entry 2144 (class 1259 OID 17946)
+-- Dependencies: 1784 1784
+-- Name: STUDYID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "STUDYID" ON factor USING btree ("STUDYID", "FNAME");
+
+
+--
+-- TOC entry 2296 (class 1259 OID 18056)
+-- Dependencies: 1823 1823
+-- Name: STUDYID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "STUDYID1" ON variate USING btree ("STUDYID", "VNAME");
+
+
+--
+-- TOC entry 2284 (class 1259 OID 18049)
+-- Dependencies: 1820
+-- Name: TID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TID" ON trait USING btree ("TID");
+
+
+--
+-- TOC entry 2278 (class 1259 OID 18044)
+-- Dependencies: 1819
+-- Name: TMETHID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TMETHID" ON tmethod USING btree ("TMETHID");
+
+
+--
+-- TOC entry 2285 (class 1259 OID 18047)
+-- Dependencies: 1820
+-- Name: TMETHID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TMETHID1" ON trait USING btree ("TMETHID");
+
+
+--
+-- TOC entry 2145 (class 1259 OID 17947)
+-- Dependencies: 1784 1784 1784
+-- Name: TRAITID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TRAITID" ON factor USING btree ("TRAITID", "SCALEID", "TMETHID");
+
+
+--
+-- TOC entry 2262 (class 1259 OID 18034)
+-- Dependencies: 1812 1812
+-- Name: TRAITID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TRAITID1" ON scale USING btree ("TRAITID", "SCNAME");
+
+
+--
+-- TOC entry 2267 (class 1259 OID 18037)
+-- Dependencies: 1813 1813
+-- Name: TRAITID2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TRAITID2" ON scale_bak USING btree ("TRAITID", "SCNAME");
+
+
+--
+-- TOC entry 2279 (class 1259 OID 18045)
+-- Dependencies: 1819 1819
+-- Name: TRAITID3; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TRAITID3" ON tmethod USING btree ("TRAITID", "TMNAME");
+
+
+--
+-- TOC entry 2286 (class 1259 OID 18050)
+-- Dependencies: 1820
+-- Name: TRAITID4; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TRAITID4" ON trait USING btree ("TRAITID");
+
+
+--
+-- TOC entry 2297 (class 1259 OID 18057)
+-- Dependencies: 1823 1823 1823
+-- Name: TRAITID5; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TRAITID5" ON variate USING btree ("TRAITID", "SCALEID", "TMETHID");
+
+
+--
+-- TOC entry 2263 (class 1259 OID 18035)
+-- Dependencies: 1812
+-- Name: TRAITID_2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TRAITID_2" ON scale USING btree ("TRAITID");
+
+
+--
+-- TOC entry 2268 (class 1259 OID 18038)
+-- Dependencies: 1813
+-- Name: TRAITID_21; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TRAITID_21" ON scale_bak USING btree ("TRAITID");
+
+
+--
+-- TOC entry 2280 (class 1259 OID 18046)
+-- Dependencies: 1819
+-- Name: TRAITID_22; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TRAITID_22" ON tmethod USING btree ("TRAITID");
+
+
+--
+-- TOC entry 2186 (class 1259 OID 17978)
+-- Dependencies: 1793
+-- Name: TRNID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "TRNID" ON ims_transaction USING btree ("TRNID");
+
+
+--
+-- TOC entry 2195 (class 1259 OID 17986)
+-- Dependencies: 1795
+-- Name: UAID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "UAID" ON instln USING btree ("UAID");
+
+
+--
+-- TOC entry 2196 (class 1259 OID 17985)
+-- Dependencies: 1795
+-- Name: UCID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "UCID" ON instln USING btree ("UCID");
+
+
+--
+-- TOC entry 2197 (class 1259 OID 17987)
+-- Dependencies: 1795
+-- Name: UGID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "UGID" ON instln USING btree ("UGID");
+
+
+--
+-- TOC entry 2198 (class 1259 OID 17988)
+-- Dependencies: 1795
+-- Name: ULDID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "ULDID" ON instln USING btree ("ULDID");
+
+
+--
+-- TOC entry 2199 (class 1259 OID 17989)
+-- Dependencies: 1795
+-- Name: UNID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "UNID" ON instln USING btree ("UNID");
+
+
+--
+-- TOC entry 2200 (class 1259 OID 17990)
+-- Dependencies: 1795
+-- Name: UPID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "UPID" ON instln USING btree ("UPID");
+
+
+--
+-- TOC entry 2181 (class 1259 OID 17973)
+-- Dependencies: 1792
+-- Name: USERID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "USERID" ON ims_lot USING btree ("USERID");
+
+
+--
+-- TOC entry 2187 (class 1259 OID 17979)
+-- Dependencies: 1793
+-- Name: USERID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "USERID1" ON ims_transaction USING btree ("USERID");
+
+
+--
+-- TOC entry 2120 (class 1259 OID 17928)
+-- Dependencies: 1777
+-- Name: VARIATID; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "VARIATID" ON data_c USING btree ("VARIATID");
+
+
+--
+-- TOC entry 2124 (class 1259 OID 17932)
+-- Dependencies: 1778
+-- Name: VARIATID1; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "VARIATID1" ON data_n USING btree ("VARIATID");
+
+
+--
+-- TOC entry 2126 (class 1259 OID 17934)
+-- Dependencies: 1779
+-- Name: VARIATID2; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "VARIATID2" ON data_t USING btree ("VARIATID");
+
+
+--
+-- TOC entry 2129 (class 1259 OID 17937)
+-- Dependencies: 1780
+-- Name: VARIATID3; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "VARIATID3" ON datattr USING btree ("VARIATID");
+
+
+--
+-- TOC entry 2301 (class 1259 OID 18059)
+-- Dependencies: 1824
+-- Name: VARIATID4; Type: INDEX; Schema: dms-local-fresh; Owner: -; Tablespace: 
+--
+
+CREATE INDEX "VARIATID4" ON veffect USING btree ("VARIATID");
+
+
+-- Completed on 2009-08-18 13:55:29
+
+--
+-- PostgreSQL database dump complete
+--
+
