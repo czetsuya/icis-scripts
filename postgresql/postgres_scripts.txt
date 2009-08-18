@@ -1,0 +1,20 @@
++dump
+
+//local
+
+pg_dump -hlocalhost --clean -Upostgres -fdms-local-schema.sql --schema=dms-local-fresh --schema-only icis-dms
+pg_dump -hlocalhost -Upostgres -fdms-local-inserts.sql --schema=dms-local-fresh --data-only icis-dms
+
+//central
+pg_dump -hlocalhost --clean -Upostgres -fdms-central-schema.sql --schema=dms-central-fresh --schema-only icis-dms
+pg_dump -hlocalhost -Upostgres -fdms--central-inserts.sql --schema=dms-central-fresh --data-only icis-dms
+
++restore
+
+//central
+pg_restore -dicis-dms-compact -Upostgres --schema=dms-central-fresh  --schema-only --verbose dms-central-schema.backup
+pg_restore -dicis-dms-compact -Upostgres --data=dms-central-fresh  --schema-only --verbose dms-central-schema.backup
+
+//local
+pg_restore -dicis-dms-compact -Upostgres --schema=dms-local-fresh  --schema-only --verbose dms-local-schema.backup
+pg_restore -dicis-dms-compact -Upostgres --data=dms-local-fresh  --schema-only --verbose dms-local-schema.backup
